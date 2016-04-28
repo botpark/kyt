@@ -1,2 +1,5 @@
 obj
-bin
+bin/Debug
+bin/Test
+bin/Release
+*.log
