@@ -27,28 +27,26 @@ namespace kyt
         private void Request(WebSocketSession session, string message)
         {
             if (message == "connect") {
-                RFID.Instance.Run(session);
+                RFID.GetInstance.Connect(session);
             }
 
             if (message == "disconnect")
             {
-                RFID.Instance.RFIDDisconnect();
+                RFID.GetInstance.Disconnect(session);
+            }
+            
+            if (message == "detect") {
+                RFID.GetInstance.Detect(session);
+            }
+
+            if (message == "start") {
+                RFID.GetInstance.Start(); ;
             }
 
             if (message == "pause") {
-                RFID.Instance.Stop();
+                RFID.GetInstance.Pause();
             }
 
-            if (message == "start")
-            {
-                RFID.Instance.Start();
-            }
-
-            if (message == "detect")
-            {
-                RFID.Instance.DetectOne();
-            }
-   
         }
 
         public void OnDebug()
