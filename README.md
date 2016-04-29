@@ -54,7 +54,7 @@ Permite dejar de detectar tags.
 	socket.emit("pause");
 ```
 
-### pause
+### single
 Permite detectar solo un tag
 ```js
 	socket.emit("single");
@@ -77,6 +77,126 @@ El callback encargado de interpretar, estos eventos simplemente sera ignorado, y
 	var foo = "Evento No Registrado";
 ```
 
-## Ejemplos
+## Recibiendo data
+Ahora que ya hemos hablado de como el cliente emite X cantidad de eventos, por consiguiente se hace necesario de visualizar como el servidor le responde ante, esto mensajes emitidos y para eso Web Sockets, nos brinda el siguiente "callback".
+
+```js
+socket.onmessage = function (evt) {
+      console.log(evt.data);
+}
+```
+
+donde ```"evt"``` contiene toda la data emitida por el servidor en respuesta a lo que el cliente emite.
+
+### connect
+En el caso de haber emitido un ```"connect"```, la data que recibe el cliente es de las siguientes tres formas:
+
+#### Primera
+Para cuando se conecta por primera vez.
+```json
+{
+    'type'   : 'connect',
+    'payload': {
+        'state'  : 'true',
+        'mensaje': 'Conectando Dispositivo...'
+    } 
+}
+```
+
+#### Segunda
+Cuando ya existe una conexión
+
+```json
+{
+    'type'   : 'connect',
+    'payload': {
+        'state'  : 'true',
+        'mensaje': 'Ya se encuentra conectado...'
+    } 
+}
+```
+
+#### Tercera
+En caso de que un error ocurra.
+
+```json
+{
+    'type'   : 'connect',
+    'payload': {
+        'state'  : 'false',
+        'mensaje': 'El mensaje de error determinado por el servidor'
+    } 
+}
+```
+
+### disconnect
+Para cuando se emite un ```"disconnect"```, el cliente recibe lo siguente en el callback principal.
+
+#### Primero
+Cuando se realiza una desconexión de forma exitosa.
+
+```json
+{
+    'type'   : 'disconnect',
+    'payload': {
+        'state'  : 'true',
+        'mensaje': 'Desconectando Dispositivo...'
+    } 
+}
+```
+
+#### Segundo
+En caso que el dispositivo ya se encuentre desconectado.
+
+```json
+{
+    'type'   : 'disconnect',
+    'payload': {
+        'state'  : 'true',
+        'mensaje': 'Ya se encuentra desconectado...'
+    } 
+}
+```
+
+#### Tercero
+En caso de error.
+
+```json
+ {
+    'type'   : 'disconnect',
+    'payload': {
+        'state'  : 'false',
+        'mensaje': 'El mensaje de error determinado por el servidor'
+    } 
+}
+```
+
+### start
+Recibe todos los tags detectados, si se emite el evento ```"start"```.
+
+```json
+{
+    'data': {
+        tag: 'E2003020250F0275199048EB',
+        ant: '4'
+    },
+    'data': {
+        tag: 'E2003020250F0275199048EB',
+        ant: '4'
+    }
+}
+```
+
+### single
+Recibe solo un tag al emitir el evento "single".
+
+```json
+{
+    'data': {
+        tag: 'E2003020250F0275199048EB',
+        ant: '4'
+    }
+}
+```
 
 
