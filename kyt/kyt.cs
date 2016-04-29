@@ -26,27 +26,28 @@ namespace kyt
 
         private void Request(WebSocketSession session, string message)
         {
-            if (message == "connect") {
-                RFID.GetInstance.Connect(session);
+            switch (message) {
+                case "connect":
+                    RFID.GetInstance.Connect(session);
+                    break;
+                case "disconnect":
+                    RFID.GetInstance.Disconnect(session);
+                    break;
+                case "reset":
+                    RFID.GetInstance.Detect(session);
+                    break;
+                case "start":
+                    RFID.GetInstance.Start();
+                    break;
+                case "pause":
+                    RFID.GetInstance.Pause();
+                    break;
+                case "single":
+                    RFID.GetInstance.DetectOne();
+                    break;
+                default: session.Send("Evento No Registrado.");
+                    break;
             }
-
-            if (message == "disconnect")
-            {
-                RFID.GetInstance.Disconnect(session);
-            }
-            
-            if (message == "detect") {
-                RFID.GetInstance.Detect(session);
-            }
-
-            if (message == "start") {
-                RFID.GetInstance.Start(); ;
-            }
-
-            if (message == "pause") {
-                RFID.GetInstance.Pause();
-            }
-
         }
 
         public void OnDebug()
@@ -59,6 +60,8 @@ namespace kyt
             RunServer();
         }
 
-        protected override void OnStop() {}
+        protected override void OnStop() {
+            RFID.GetInstance.Disconnect(null);
+        }
     }
 }

@@ -16,4 +16,7 @@ En este modo simplemente se corre el sevicio en modo debug por Visual Studio y q
 Se brinda un instalador, en el siguiente enlace; [kyt Installer](http://www.google.com)
 
 ## API
+Texto de prueba
+
+## Ejemplos
 

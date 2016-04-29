@@ -45,38 +45,97 @@ namespace kyt
                     }
                     StaticClassReaderB.OpenNetPort(Convert.ToInt32(READER_PORT), READER_IP, ref HANDLE_IP, ref HANDLE_PORT);
                     READER_CONNECT = true;
-                    res.Send("Conectando Dispositivo...");
+                    Detect(res);
+                    // res.Send("Conectando Dispositivo...");
+                    res.Send(@"
+                        {
+                            'type'   : 'connect',
+                            'payload': {
+                                'state'  : 'true',
+                                'mensaje': 'Conectando Dispositivo...'
+                            } 
+                        }
+                    ");
                 }
                 catch (Exception e)
                 {
-                    res.Send(e.Message);
+                    // res.Send(e.Message);
+                    res.Send(@"
+                        {
+                            'type'   : 'connect',
+                            'payload': {
+                                'state'  : 'false',
+                                'mensaje': '" + e.Message + @"'
+                            } 
+                        }
+                    ");
                 }
             }
             else
             {
-                res.Send("Ya se encuentra conectado...");
+                // res.Send("Ya se encuentra conectado...");
+                res.Send(@"
+                    {
+                        'type'   : 'connect',
+                        'payload': {
+                            'state'  : 'true',
+                            'mensaje': 'Ya se encuentra conectado...'
+                        } 
+                    }
+                ");
             }
         }
 
         public void Disconnect(WebSocketSession res)
         {
-            if (READER_CONNECT)
-            {
-                try
+            if (res != null) {
+                if (READER_CONNECT)
                 {
-                    Thread.Sleep(8000);
-                    READER_CONNECT = false;
-                    res.Send("Desconectando Dispositivo...");
+                    try
+                    {
+                        Thread.Sleep(8000);
+                        READER_CONNECT = false;
+                        OBSERVER.Abort();
+                        // res.Send("Desconectando Dispositivo...");
+                        res.Send(@"
+                            {
+                                'type'   : 'disconnect',
+                                'payload': {
+                                    'state'  : 'true',
+                                    'mensaje': 'Desconectando Dispositivo...'
+                                } 
+                            }
+                        ");
+                    }
+                    catch (Exception e)
+                    {
+                        // res.Send(e.Message);
+                        res.Send(@"
+                            {
+                                'type'   : 'disconnect',
+                                'payload': {
+                                    'state'  : 'false',
+                                    'mensaje': '" + e.Message + @"'
+                                } 
+                            }
+                        ");
+                    }
                 }
-                catch (Exception e)
+                else
                 {
-                    res.Send(e.Message);
+                    // res.Send("Ya se encuentra desconectado...");
+                    res.Send(@"
+                        {
+                            'type'   : 'disconnect',
+                            'payload': {
+                                'state'  : 'true',
+                                'mensaje': 'Ya se encuentra desconectado...'
+                            } 
+                        }
+                    ");
                 }
             }
-            else
-            {
-                res.Send("Ya se encuentra desconectado...");
-            }
+            
         }
 
         public void Detect(WebSocketSession res)
@@ -86,7 +145,6 @@ namespace kyt
                 EVENT = new ManualResetEvent(true);
                 OBSERVER = new Thread(() =>
                 {
-
                     while (OBSERVER.IsAlive)
                     {
 
@@ -97,7 +155,6 @@ namespace kyt
 
                         if (state)
                         {
-                            // res.Send(data.tag);
                             res.Send(@"
                                 {
                                     'data': {
@@ -112,6 +169,7 @@ namespace kyt
 
                 OBSERVER.SetApartmentState(ApartmentState.STA);
                 OBSERVER.Start();
+                EVENT.Reset();
             }
             else
             {
@@ -135,10 +193,19 @@ namespace kyt
             }
         }
 
+        public void DetectOne()
+        {
+            if (READER_CONNECT == true && READER_INIT == false)
+            {
+                Start();
+                Thread.Sleep(100);
+                Pause();
+            }
+        }
 
         private string TAG()
         {
-            // action, tag, antena
+
             byte[] EPC = new byte[5000];
             byte[] maskAdr = parser.GetBytes("0000");
             byte maskLen = Convert.ToByte("00");
@@ -151,14 +218,13 @@ namespace kyt
             if ((responseReader == 1) | (responseReader == 2) | (responseReader == 3) | (responseReader == 4) | (responseReader == 0xFB))
             {
 
-                byte[] daw = new byte[longitud];   //   EPC Extraido en longitud.
-                Array.Copy(EPC, daw, longitud);    //   Copia la info del EPC al arreglo de extaracción
+                byte[] daw = new byte[longitud];
+                Array.Copy(EPC, daw, longitud);
 
-                string TAG_EPC = parser.GetString(daw); // Transforma el EPC extraido en string.
+                string TAG_EPC = parser.GetString(daw);
 
                 if (CardNum == 0)
                 {
-                    // return "false,0,0";
                     return @"
                         {
                             'state': 'false',
@@ -184,7 +250,6 @@ namespace kyt
                     }
                     else
                     {
-                        // return "false,0,0";
                         return @"
                             {
                                 'state': 'false',
@@ -197,7 +262,6 @@ namespace kyt
             }
             else
             {
-                // return "false,0,0";
                 return @"
                     {
                         'state': 'false',
