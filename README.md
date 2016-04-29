@@ -95,10 +95,10 @@ En el caso de haber emitido un ```"connect"```, la data que recibe el cliente es
 Para cuando se conecta por primera vez.
 ```json
 {
-    'type'   : 'connect',
-    'payload': {
-        'state'  : 'true',
-        'mensaje': 'Conectando Dispositivo...'
+    "type"   : "connect",
+    "payload": {
+        "state"  : "true",
+        "mensaje": "Conectando Dispositivo..."
     } 
 }
 ```
@@ -108,10 +108,10 @@ Cuando ya existe una conexión
 
 ```json
 {
-    'type'   : 'connect',
-    'payload': {
-        'state'  : 'true',
-        'mensaje': 'Ya se encuentra conectado...'
+    "type"   : "connect",
+    "payload": {
+        "state"  : "true",
+        "mensaje": "Ya se encuentra conectado..."
     } 
 }
 ```
@@ -121,10 +121,10 @@ En caso de que un error ocurra.
 
 ```json
 {
-    'type'   : 'connect',
-    'payload': {
-        'state'  : 'false',
-        'mensaje': 'El mensaje de error determinado por el servidor'
+    "type"   : "connect",
+    "payload": {
+        "state"  : "false",
+        "mensaje": "El mensaje de error determinado por el servidor"
     } 
 }
 ```
@@ -137,10 +137,10 @@ Cuando se realiza una desconexión de forma exitosa.
 
 ```json
 {
-    'type'   : 'disconnect',
-    'payload': {
-        'state'  : 'true',
-        'mensaje': 'Desconectando Dispositivo...'
+    "type"   : "disconnect",
+    "payload": {
+        "state"  : "true",
+        "mensaje": "Desconectando Dispositivo..."
     } 
 }
 ```
@@ -150,10 +150,10 @@ En caso que el dispositivo ya se encuentre desconectado.
 
 ```json
 {
-    'type'   : 'disconnect',
-    'payload': {
-        'state'  : 'true',
-        'mensaje': 'Ya se encuentra desconectado...'
+    "type"   : "disconnect",
+    "payload": {
+        "state"  : "true",
+        "mensaje": "Ya se encuentra desconectado..."
     } 
 }
 ```
@@ -163,10 +163,10 @@ En caso de error.
 
 ```json
  {
-    'type'   : 'disconnect',
-    'payload': {
-        'state'  : 'false',
-        'mensaje': 'El mensaje de error determinado por el servidor'
+    "type"   : "disconnect",
+    "payload": {
+        "state"  : "false",
+        "mensaje": "El mensaje de error determinado por el servidor"
     } 
 }
 ```
@@ -176,13 +176,13 @@ Recibe todos los tags detectados, si se emite el evento ```"start"```.
 
 ```json
 {
-    'data': {
-        tag: 'E2003020250F0275199048EB',
-        ant: '4'
+    "data": {
+        "tag": "E2003020250F0275199048EB",
+        "ant": "4"
     },
-    'data': {
-        tag: 'E2003020250F0275199048EB',
-        ant: '4'
+    "data": {
+        "tag": "E2003020250F0275199048EB",
+        "ant": "4"
     }
 }
 ```
@@ -192,9 +192,9 @@ Recibe solo un tag al emitir el evento "single".
 
 ```json
 {
-    'data': {
-        tag: 'E2003020250F0275199048EB',
-        ant: '4'
+    "data": {
+        "tag": "E2003020250F0275199048EB",
+        "ant": "4"
     }
 }
 ```
