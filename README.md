@@ -188,7 +188,7 @@ Recibe todos los tags detectados, si se emite el evento ```"start"```.
 ```
 
 ### single
-Recibe solo un tag al emitir el evento "single".
+Recibe solo un tag al emitir el evento ```"single"```.
 
 ```json
 {

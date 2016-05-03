@@ -47,7 +47,7 @@ namespace kyt
                     READER_CONNECT = true;
                     Detect(res);
                     // res.Send("Conectando Dispositivo...");
-                    res.Send(@"
+                    res.Send(@"kyt = 
                         {
                             'type'   : 'connect',
                             'payload': {
@@ -60,7 +60,7 @@ namespace kyt
                 catch (Exception e)
                 {
                     // res.Send(e.Message);
-                    res.Send(@"
+                    res.Send(@"kyt =
                         {
                             'type'   : 'connect',
                             'payload': {
@@ -74,7 +74,7 @@ namespace kyt
             else
             {
                 // res.Send("Ya se encuentra conectado...");
-                res.Send(@"
+                res.Send(@"kyt = 
                     {
                         'type'   : 'connect',
                         'payload': {
@@ -97,7 +97,7 @@ namespace kyt
                         READER_CONNECT = false;
                         OBSERVER.Abort();
                         // res.Send("Desconectando Dispositivo...");
-                        res.Send(@"
+                        res.Send(@"kyt = 
                             {
                                 'type'   : 'disconnect',
                                 'payload': {
@@ -110,7 +110,7 @@ namespace kyt
                     catch (Exception e)
                     {
                         // res.Send(e.Message);
-                        res.Send(@"
+                        res.Send(@"kyt =
                             {
                                 'type'   : 'disconnect',
                                 'payload': {
@@ -124,7 +124,7 @@ namespace kyt
                 else
                 {
                     // res.Send("Ya se encuentra desconectado...");
-                    res.Send(@"
+                    res.Send(@"kyt =
                         {
                             'type'   : 'disconnect',
                             'payload': {
@@ -155,9 +155,10 @@ namespace kyt
 
                         if (state)
                         {
-                            res.Send(@"
+                            res.Send(@"kyt =
                                 {
-                                    'data': {
+                                    'type': 'tag',
+                                    'payload': {
                                         tag: '" + data.tag + @"',
                                         ant: '" + data.ant + @"'
                                     }
