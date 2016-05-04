@@ -51,7 +51,7 @@ Inicia la detección de tags, la data emitida sera constante hasta que se decida
 ### pause
 Permite dejar de detectar tags.
 ```js
-	socket.emit("pause");
+	kyt.send("pause");
 ```
 
 ### single
