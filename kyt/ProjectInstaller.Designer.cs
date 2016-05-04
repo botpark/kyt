@@ -40,8 +40,8 @@
             // 
             // KytServiceInstaller
             // 
-            this.KytServiceInstaller.Description = "Servicio de rfid";
-            this.KytServiceInstaller.DisplayName = "KytService";
+            this.KytServiceInstaller.Description = "Servicio de RFID PT-3L01Z";
+            this.KytServiceInstaller.DisplayName = "Kyt";
             this.KytServiceInstaller.ServiceName = "kyt";
             this.KytServiceInstaller.AfterInstall += new System.Configuration.Install.InstallEventHandler(this.KytServiceInstaller_AfterInstall);
             // 
