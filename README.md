@@ -24,7 +24,7 @@ WebSocket es un protocolo que al igual que http es usado para la comunicación e
 Para crear una sencilla conexión websocket desde JavaScript, es necesario crear la siguiente estancia.
 
 ```js
-	var socket = new WebSocket('ws://127.0.0.1:2020')
+	var kyt = new WebSocket('ws://127.0.0.1:2020')
 ```
 
 ### Emitiendo Eventos
@@ -33,19 +33,19 @@ Una ves conectado el socket a nuestro servidor socket, que se encuentra corriend
 #### connect
 Permite conectar el dispositivo RFID, a su ves arranca un hilo en el servidor, que permite la detección de tags, pero queda en un estado pausado.
 ```js
-	socket.emit("connect");
+	kyt.send("connect");
 ```
 
 #### disconnect
 Permite desconectar al dispositivo RFID, y a su ves mata todos los hilos existentes, necesarios para la detección de tags.
 ```js
-	socket.emit("disconnect");
+	kyt.send("disconnect");
 ```
 
 ### start
 Inicia la detección de tags, la data emitida sera constante hasta que se decida parar.
 ```js
-	socket.emit("start");
+	kyt.send("start");
 ```
 
 ### pause
@@ -57,19 +57,19 @@ Permite dejar de detectar tags.
 ### single
 Permite detectar solo un tag
 ```js
-	socket.emit("single");
+	kyt.send("single");
 ```
 
 ### reset
 Es usado en caso de encontrarse una desconexión por parte de la estancia del socket y el dispositivo en este caso ya se encontraria conectado.
 ```js
-	socket.emit("reset");
+	kyt.send("reset");
 ```
 
 ### default
 En caso de emitirse un evento no registrado, ejemplo;
 ```js
-	socket.emit("pepe");
+	kyt.send("pepe");
 ```
 El callback encargado de interpretar, estos eventos simplemente sera ignorado, y retornara un mensaje como el siguiente:
 
@@ -81,7 +81,7 @@ El callback encargado de interpretar, estos eventos simplemente sera ignorado, y
 Ahora que ya hemos hablado de como el cliente emite X cantidad de eventos, por consiguiente se hace necesario de visualizar como el servidor le responde ante, esto mensajes emitidos y para eso Web Sockets, nos brinda el siguiente "callback".
 
 ```js
-socket.onmessage = function (evt) {
+kyt.onmessage = function (evt) {
       console.log(evt.data);
 }
 ```
