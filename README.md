@@ -16,15 +16,14 @@ En este modo simplemente se corre el sevicio en modo debug por Visual Studio y q
 Se brinda un instalador, en el siguiente enlace; [kyt Installer](http://www.google.com)
 
 ## API
-Texto de prueba
 
 ### Conexión Socket
-WebSocket es un protocolo que al igual que http es usado para la comunicación entre el cliente y el servidor, pero en este caso, http solo functiona en una sola dirección; el cliente realiza una petición y el servidor responde. Mientras que con sockets se abre un canal de comunicación en el que el servidor emite data cada ves que encuentra que algo cambia.
+WebSocket es un protocolo que al igual que http es usado para la comunicación entre el cliente y servidor, pero en este caso, http solo functiona en una sola dirección; el cliente realiza una petición y el servidor responde. Mientras que con sockets se abre un canal de comunicación en el que el servidor emite data cada ves que algo cambia.
 
 Para crear una sencilla conexión websocket desde JavaScript, es necesario crear la siguiente estancia.
 
 ```js
-	var socket = new WebSocket('ws://127.0.0.1:2020')
+	var kyt = new WebSocket('ws://127.0.0.1:2020')
 ```
 
 ### Emitiendo Eventos
@@ -33,43 +32,43 @@ Una ves conectado el socket a nuestro servidor socket, que se encuentra corriend
 #### connect
 Permite conectar el dispositivo RFID, a su ves arranca un hilo en el servidor, que permite la detección de tags, pero queda en un estado pausado.
 ```js
-	socket.emit("connect");
+	kyt.send("connect");
 ```
 
 #### disconnect
 Permite desconectar al dispositivo RFID, y a su ves mata todos los hilos existentes, necesarios para la detección de tags.
 ```js
-	socket.emit("disconnect");
+	kyt.send("disconnect");
 ```
 
 ### start
 Inicia la detección de tags, la data emitida sera constante hasta que se decida parar.
 ```js
-	socket.emit("start");
+	kyt.send("start");
 ```
 
 ### pause
 Permite dejar de detectar tags.
 ```js
-	socket.emit("pause");
+	kyt.send("pause");
 ```
 
 ### single
 Permite detectar solo un tag
 ```js
-	socket.emit("single");
+	kyt.send("single");
 ```
 
 ### reset
 Es usado en caso de encontrarse una desconexión por parte de la estancia del socket y el dispositivo en este caso ya se encontraria conectado.
 ```js
-	socket.emit("reset");
+	kyt.send("reset");
 ```
 
 ### default
 En caso de emitirse un evento no registrado, ejemplo;
 ```js
-	socket.emit("pepe");
+	kyt.send("pepe");
 ```
 El callback encargado de interpretar, estos eventos simplemente sera ignorado, y retornara un mensaje como el siguiente:
 
@@ -78,15 +77,15 @@ El callback encargado de interpretar, estos eventos simplemente sera ignorado, y
 ```
 
 ## Recibiendo data
-Ahora que ya hemos hablado de como el cliente emite X cantidad de eventos, por consiguiente se hace necesario de visualizar como el servidor le responde ante, esto mensajes emitidos y para eso Web Sockets, nos brinda el siguiente "callback".
+Ahora que ya hemos hablado de como el cliente emite X cantidad de eventos, es el turno del servidor y de como recibe la data el cliente.
 
 ```js
-socket.onmessage = function (evt) {
+kyt.onmessage = function (evt) {
       console.log(evt.data);
 }
 ```
 
-donde ```"evt"``` contiene toda la data emitida por el servidor en respuesta a lo que el cliente emite.
+donde ```"evt"``` contiene toda la data emitida por el servidor.
 
 ### connect
 En el caso de haber emitido un ```"connect"```, la data que recibe el cliente es de las siguientes tres formas:
@@ -172,15 +171,12 @@ En caso de error.
 ```
 
 ### start
-Recibe todos los tags detectados, si se emite el evento ```"start"```.
+Recibe la data de los tags de manera constante al emitirse el evento ```"start"```.
 
 ```json
 {
-    "data": {
-        "tag": "E2003020250F0275199048EB",
-        "ant": "4"
-    },
-    "data": {
+    "type": "tag",
+    "payload": {
         "tag": "E2003020250F0275199048EB",
         "ant": "4"
     }
@@ -192,7 +188,8 @@ Recibe solo un tag al emitir el evento ```"single"```.
 
 ```json
 {
-    "data": {
+    "type": "tag",
+    "payload": {
         "tag": "E2003020250F0275199048EB",
         "ant": "4"
     }
