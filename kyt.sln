@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kyt", "kyt\kyt.csproj", "{8116707B-01EC-410C-8C78-C45E771D52BC}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setupkyt", "Setupkyt\Setupkyt.vdproj", "{92027AF8-C9EF-451B-80C0-518310344196}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,6 +20,9 @@ Global
 		{8116707B-01EC-410C-8C78-C45E771D52BC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8116707B-01EC-410C-8C78-C45E771D52BC}.Test|Any CPU.ActiveCfg = Test|Any CPU
 		{8116707B-01EC-410C-8C78-C45E771D52BC}.Test|Any CPU.Build.0 = Test|Any CPU
+		{92027AF8-C9EF-451B-80C0-518310344196}.Debug|Any CPU.ActiveCfg = Debug
+		{92027AF8-C9EF-451B-80C0-518310344196}.Release|Any CPU.ActiveCfg = Release
+		{92027AF8-C9EF-451B-80C0-518310344196}.Test|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
