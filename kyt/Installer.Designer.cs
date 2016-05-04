@@ -1,6 +1,6 @@
 ﻿namespace kyt
 {
-    partial class ProjectInstaller
+    partial class Installer
     {
         /// <summary>
         /// Variable del diseñador necesaria.
@@ -28,34 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Kyt = new System.ServiceProcess.ServiceProcessInstaller();
-            this.KytServiceInstaller = new System.ServiceProcess.ServiceInstaller();
+            this.KytProcess = new System.ServiceProcess.ServiceProcessInstaller();
+            this.KytService = new System.ServiceProcess.ServiceInstaller();
             // 
-            // Kyt
+            // KytProcess
             // 
-            this.Kyt.Account = System.ServiceProcess.ServiceAccount.LocalSystem;
-            this.Kyt.Password = null;
-            this.Kyt.Username = null;
-            this.Kyt.AfterInstall += new System.Configuration.Install.InstallEventHandler(this.serviceProcessInstaller1_AfterInstall);
+            this.KytProcess.Account = System.ServiceProcess.ServiceAccount.LocalSystem;
+            this.KytProcess.Password = null;
+            this.KytProcess.Username = null;
             // 
-            // KytServiceInstaller
+            // KytService
             // 
-            this.KytServiceInstaller.Description = "Servicio de RFID PT-3L01Z";
-            this.KytServiceInstaller.DisplayName = "Kyt";
-            this.KytServiceInstaller.ServiceName = "kyt";
-            this.KytServiceInstaller.AfterInstall += new System.Configuration.Install.InstallEventHandler(this.KytServiceInstaller_AfterInstall);
+            this.KytService.Description = "Servicio Windows del RFID PT-3L01Z";
+            this.KytService.DisplayName = "Kyt";
+            this.KytService.ServiceName = "kyt";
+            this.KytService.StartType = System.ServiceProcess.ServiceStartMode.Automatic;
             // 
-            // ProjectInstaller
+            // Installer
             // 
             this.Installers.AddRange(new System.Configuration.Install.Installer[] {
-            this.Kyt,
-            this.KytServiceInstaller});
+            this.KytProcess,
+            this.KytService});
 
         }
 
         #endregion
 
-        private System.ServiceProcess.ServiceProcessInstaller Kyt;
-        private System.ServiceProcess.ServiceInstaller KytServiceInstaller;
+        private System.ServiceProcess.ServiceProcessInstaller KytProcess;
+        private System.ServiceProcess.ServiceInstaller KytService;
     }
 }
