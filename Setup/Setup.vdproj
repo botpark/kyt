@@ -15,14 +15,8 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_19F93402ECE349A49EDB52CBF3B1445B"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_39918B3D11C2085D4C0454FAD4B29DCE"
-        "OwnerKey" = "8:_19F93402ECE349A49EDB52CBF3B1445B"
+        "OwnerKey" = "8:_D8627BAD5C004F15883B31311F22C588"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -46,19 +40,19 @@
         "Entry"
         {
         "MsmKey" = "8:_3E7583CC74D0275757B808F8D770C453"
-        "OwnerKey" = "8:_19F93402ECE349A49EDB52CBF3B1445B"
+        "OwnerKey" = "8:_D8627BAD5C004F15883B31311F22C588"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_4F687C43835DEF0232F1F59703D2DAD8"
-        "OwnerKey" = "8:_19F93402ECE349A49EDB52CBF3B1445B"
+        "OwnerKey" = "8:_D8627BAD5C004F15883B31311F22C588"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_60F34D13807E4851A7ADA5EE140F7A5C"
-        "OwnerKey" = "8:_19F93402ECE349A49EDB52CBF3B1445B"
+        "OwnerKey" = "8:_D8627BAD5C004F15883B31311F22C588"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -76,7 +70,7 @@
         "Entry"
         {
         "MsmKey" = "8:_6730217100DFA083BCEC74E7DC6A9D7B"
-        "OwnerKey" = "8:_19F93402ECE349A49EDB52CBF3B1445B"
+        "OwnerKey" = "8:_D8627BAD5C004F15883B31311F22C588"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -88,7 +82,7 @@
         "Entry"
         {
         "MsmKey" = "8:_BA9EFF700577F0EA650DEE56F0D28494"
-        "OwnerKey" = "8:_19F93402ECE349A49EDB52CBF3B1445B"
+        "OwnerKey" = "8:_D8627BAD5C004F15883B31311F22C588"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -100,13 +94,19 @@
         "Entry"
         {
         "MsmKey" = "8:_CCC7713496019070DC0B598F94644326"
-        "OwnerKey" = "8:_19F93402ECE349A49EDB52CBF3B1445B"
+        "OwnerKey" = "8:_D8627BAD5C004F15883B31311F22C588"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D8627BAD5C004F15883B31311F22C588"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_F69B6739C047303CF65FACB2900BB2FA"
-        "OwnerKey" = "8:_19F93402ECE349A49EDB52CBF3B1445B"
+        "OwnerKey" = "8:_D8627BAD5C004F15883B31311F22C588"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -118,7 +118,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_19F93402ECE349A49EDB52CBF3B1445B"
+        "OwnerKey" = "8:_D8627BAD5C004F15883B31311F22C588"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -181,6 +181,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -197,37 +205,45 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
     {
         "CustomAction"
         {
-            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_44A780B158C24ED09BEC5EAA7F973605"
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_752B96EDAE4247BE8925145C0B9596C9"
             {
             "Name" = "8:Resultado principal from kyt (Active)"
             "Condition" = "8:"
-            "Object" = "8:_19F93402ECE349A49EDB52CBF3B1445B"
-            "FileType" = "3:2"
-            "InstallAction" = "3:1"
-            "Arguments" = "8:"
-            "EntryPoint" = "8:"
-            "Sequence" = "3:1"
-            "Identifier" = "8:_CFBED5B3_4800_4FE0_B489_5B7E31A69382"
-            "InstallerClass" = "11:TRUE"
-            "CustomActionData" = "8:"
-            }
-            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_B0390D1CE6BF44E4A073896138B0F034"
-            {
-            "Name" = "8:Resultado principal from kyt (Active)"
-            "Condition" = "8:"
-            "Object" = "8:_19F93402ECE349A49EDB52CBF3B1445B"
+            "Object" = "8:_D8627BAD5C004F15883B31311F22C588"
             "FileType" = "3:2"
             "InstallAction" = "3:4"
             "Arguments" = "8:"
             "EntryPoint" = "8:"
             "Sequence" = "3:1"
-            "Identifier" = "8:_D07E4B7E_5AF6_4F06_896F_41CC0378639F"
+            "Identifier" = "8:_91C405C0_2055_4574_A463_A70A1FB2F3B6"
+            "InstallerClass" = "11:TRUE"
+            "CustomActionData" = "8:"
+            }
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_794BBBB08C4E4B57A2FD75797C7E833A"
+            {
+            "Name" = "8:Resultado principal from kyt (Active)"
+            "Condition" = "8:"
+            "Object" = "8:_D8627BAD5C004F15883B31311F22C588"
+            "FileType" = "3:2"
+            "InstallAction" = "3:1"
+            "Arguments" = "8:"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:1"
+            "Identifier" = "8:_9990E73B_70EE_4289_BE55_D418E81057CB"
             "InstallerClass" = "11:TRUE"
             "CustomActionData" = "8:"
             }
@@ -570,7 +586,7 @@
         "Manufacturer" = "8:botpark"
         "ARPHELPTELEPHONE" = "8:3203735928"
         "ARPHELPLINK" = "8:http://noders.com/"
-        "Title" = "8:botpark"
+        "Title" = "8:Kyt"
         "Subject" = "8:Recuerda que kyt crea un servidor socket que permite mediante la dirección \"127.0.0.1:2020\" emitir los eventos el dispositvo a los clientes conectados al servicio. "
         "ARPCONTACT" = "8:botpark"
         "Keywords" = "8:RFID PT-3L01Z, Sockets"
@@ -1078,9 +1094,9 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_19F93402ECE349A49EDB52CBF3B1445B"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_D8627BAD5C004F15883B31311F22C588"
             {
-            "SourcePath" = "8:..\\kyt\\obj\\Debug\\kyt.exe"
+            "SourcePath" = "8:..\\kyt\\obj\\Release\\kyt.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_05F956C7379641F5A0C4C8B014D777D5"
